@@ -7,6 +7,7 @@ import { resolve } from 'path'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const serverProxyApiUrl = env.VITE_SERVER_PROXY_API_URL
+  const serverProxyApiIsSecure = env.VITE_SERVER_PROXY_API_IS_SECURE === 'true'
   const serverAllowedHosts = env.__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
     ? env.__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS.split(',')
     : []
@@ -45,7 +46,7 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: serverProxyApiUrl,
           changeOrigin: true,
-          secure: false
+          secure: serverProxyApiIsSecure
         }
       }
     },
