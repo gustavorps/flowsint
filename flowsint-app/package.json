@@ -139,6 +139,6 @@
     "react-dom": "^19.2.0",
     "standard-version": "^9.5.0",
     "typescript": "^5.5.2",
-    "vite": "^5.3.1"
+    "vite": "^5.4.21"
   }
 }
