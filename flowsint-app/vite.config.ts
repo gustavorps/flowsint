@@ -7,6 +7,9 @@ import { resolve } from 'path'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const apiUrl = env.VITE_API_URL
+  const serverAllowedHosts = env.__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
+    ? env.__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS.split(',')
+    : []
 
   return {
     plugins: [
@@ -37,6 +40,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       open: true,
+      allowedHosts: serverAllowedHosts,
       proxy: {
         '/api': {
           target: apiUrl,
