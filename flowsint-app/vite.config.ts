@@ -48,7 +48,8 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           secure: serverProxyApiIsSecure
         }
-      }
+      },
+      cors: true
     },
     preview: {
       open: false,
